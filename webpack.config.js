@@ -1,5 +1,5 @@
 module.exports = {
-  entry: __dirname + "/app/react.js",
+  entry: __dirname + "/app/react.jsx",
   module: {
     loaders: [
       {
