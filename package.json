@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "description": "",
   "main": "app/main.js",
-  "directories": {
-    "test": "tests"
-  },
   "dependencies": {
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
