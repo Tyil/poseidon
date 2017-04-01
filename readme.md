@@ -1,7 +1,7 @@
 # Poseidon
 An automatic music downloader for private trackers.
 
-This project is ment to become a competitor to Headphones. Sadly, as this is a
+This project is meant to become a competitor to Headphones. Sadly, as this is a
 hobby project and I only have so much spare time, don't consider it anything
 worthwhile.
 
