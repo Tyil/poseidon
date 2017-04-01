@@ -11,6 +11,7 @@ Clone this repository and start the application using `npm`:
 ```
 git clone https://github.com/Tyil/poseidon poseidon
 cd $_
+npm install
 npm start
 ```
 
