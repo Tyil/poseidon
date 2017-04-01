@@ -10,12 +10,16 @@
     "babel-preset-react": "^6.23.0",
     "express": "^4.15.2",
     "material-ui": "^0.17.1",
+    "memory-cache": "^0.1.6",
+    "net": "^1.0.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
     "react-tap-event-plugin": "^2.0.1",
+    "request": "^2.81.0",
     "serve-index": "^1.8.0",
+    "tls": "0.0.1",
     "webpack": "^2.3.2"
   },
   "devDependencies": {

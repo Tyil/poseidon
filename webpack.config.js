@@ -6,6 +6,9 @@ module.exports = {
     path: __dirname + "/public",
     filename: "app.js"
   },
+  node: {
+    fs: "empty"
+  },
   module: {
     loaders: [
       {
