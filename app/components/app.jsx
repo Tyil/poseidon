@@ -5,6 +5,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Header from "./header.jsx";
 
 import Home from "../views/home.jsx";
+import SearchArtist from "../views/search-artist.jsx";
 
 export default class AppComponent extends React.Component {
   render() {
@@ -14,7 +15,10 @@ export default class AppComponent extends React.Component {
           <Header />
           <main>
             <Router>
-              <Route path="/" component={Home} />
+              <div>
+                <Route exact path="/" component={Home} />
+                <Route path="/search/artist/:query" component={SearchArtist} />
+              </div>
             </Router>
           </main>
         </div>

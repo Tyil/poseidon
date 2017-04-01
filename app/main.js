@@ -14,6 +14,7 @@ app.use(express.static(__dirname + "/../public"));
 
 // add controllers
 app.use("/api", require(controllerDir + "main"));
+app.use("/api/artist", require(controllerDir + "artist"));
 
 // start the application
 app.listen(port, () => console.log("Poseidon's rage can be witnessed from :" + port));
