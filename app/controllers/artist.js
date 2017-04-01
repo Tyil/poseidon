@@ -13,7 +13,6 @@ router.route("/search/:query").get((req, res) => {
   }
 
   const url = "https://musicbrainz.org/ws/2/artist?query=" + query + "&limit=50&fmt=json";
-  console.log(url);
 
   request({
     url: url,
@@ -22,7 +21,14 @@ router.route("/search/:query").get((req, res) => {
     }
   }, (error, response, body) => {
     if (error || response.statusCode != 200) {
-      console.log(response.statusCode + ": " + error);
+      res.json({
+        ok: false,
+        error: {
+          status: response.statusCode,
+          message: error
+        }
+      });
+
       return;
     }
 
@@ -31,7 +37,10 @@ router.route("/search/:query").get((req, res) => {
     // add to cache
     memcache.put(cacheKey, data, 600 * 1000);
 
-    res.json(data);
+    res.json({
+      ok: true,
+      data: data
+    });
   });
 });
 
