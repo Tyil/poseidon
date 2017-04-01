@@ -30,6 +30,7 @@
   "scripts": {
     "serve": "nodemon",
     "build": "webpack --progress --colors",
+    "start": "npm run build && npm run serve",
     "test": "eslint -c .eslintrc.express.js app/**/*.js && eslint -c .eslintrc.react.js app/**/*.jsx && mocha"
   },
   "author": "",
