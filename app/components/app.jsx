@@ -12,6 +12,10 @@ export default class AppComponent extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      showMenu: true
+    };
+
     this.styles = {
       rootLeft: {
         float: "left",
@@ -30,12 +34,53 @@ export default class AppComponent extends React.Component {
     };
   }
 
+  handleMenuToggle() {
+    if (this.state.showMenu) {
+      // update left side
+      const newLeft = Object.assign({}, this.styles.rootLeft);
+      newLeft.display = "none";
+
+      this.styles.rootLeft = newLeft;
+
+      // update right side
+      const newRight = Object.assign({}, this.styles.rootRight);
+      newRight.width = "100%";
+
+      this.styles.rootRight = newRight;
+
+      // update state
+      this.setState({
+        showMenu: false
+      });
+
+      return;
+    }
+
+    // update left side
+    const newLeft = Object.assign({}, this.styles.rootLeft);
+    newLeft.display = "block";
+
+    this.styles.rootLeft = newLeft;
+
+    // update right side
+    const newRight = Object.assign({}, this.styles.rootRight);
+    newRight.width = "80%";
+
+    this.styles.rootRight = newRight;
+
+    this.setState({
+      showMenu: true
+    });
+  }
+
   render() {
     return (
       <MuiThemeProvider>
         <Router>
           <div id="root">
-            <Header />
+            <Header
+              leftFunction={this.handleMenuToggle.bind(this)}
+            />
             <div id="root-left" style={this.styles.rootLeft}>
               <Navbar />
             </div>
