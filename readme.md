@@ -8,10 +8,21 @@ worthwhile.
 ## Getting started
 Clone this repository and start the application using `npm`:
 
+### Installation
 ```
 git clone https://github.com/Tyil/poseidon poseidon
 cd $_
 npm install
+```
+
+### Configuration
+```
+cp config/database.example.json config/database.json
+$EDITOR $_
+```
+
+### Running
+```
 npm start
 ```
 
