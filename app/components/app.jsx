@@ -12,41 +12,65 @@ export default class AppComponent extends React.Component {
   constructor(props) {
     super(props);
 
+    // set initial state
+    if (typeof(localStorage.navbarHidden) == "undefined") {
+      localStorage.navbarHidden = JSON.stringify(false);
+    }
+
     this.state = {
-      showMenu: true
+      showMenu: !JSON.parse(localStorage.navbarHidden)
     };
 
     this.styles = {
-      rootLeft: {
-        float: "left",
-        width: "20%",
-        display: "block"
-      },
-      rootRight: {
-        float: "left",
-        width: "80%",
-        display: "block"
-      },
       main: {
         width: "90%",
         margin: "0 auto"
       }
     };
+
+    if (this.state.showMenu) {
+      this.styles.rootLeft = this.getStyleLeftVisible();
+      this.styles.rootRight = this.getStyleRightVisible();
+    } else {
+      this.styles.rootLeft = this.getStyleLeftHidden();
+      this.styles.rootRight = this.getStyleRightHidden();
+    }
   }
+
+  getStyleLeftHidden() {
+    return {
+      display: "none"
+    };
+  }
+
+  getStyleLeftVisible() {
+    return {
+      float: "left",
+      width: "20%",
+      display: "block"
+    };
+  }
+
+  getStyleRightHidden() {
+    return {
+      width: "100%"
+    }
+  }
+
+  getStyleRightVisible() {
+    return {
+      float: "left",
+      width: "80%"
+    };
+  };
 
   handleMenuToggle() {
     if (this.state.showMenu) {
-      // update left side
-      const newLeft = Object.assign({}, this.styles.rootLeft);
-      newLeft.display = "none";
+      this.styles.rootLeft = this.getStyleLeftHidden();
+      this.styles.rootRight = this.getStyleRightHidden();
 
-      this.styles.rootLeft = newLeft;
-
-      // update right side
-      const newRight = Object.assign({}, this.styles.rootRight);
-      newRight.width = "100%";
-
-      this.styles.rootRight = newRight;
+      // save preference
+      localStorage.navbarHidden = JSON.stringify(true);
 
       // update state
       this.setState({
@@ -56,18 +80,13 @@ export default class AppComponent extends React.Component {
       return;
     }
 
-    // update left side
-    const newLeft = Object.assign({}, this.styles.rootLeft);
-    newLeft.display = "block";
+    this.styles.rootLeft = this.getStyleLeftVisible();
+    this.styles.rootRight = this.getStyleRightVisible();
 
-    this.styles.rootLeft = newLeft;
+    // save preference
+    localStorage.navbarHidden = JSON.stringify(false);
 
-    // update right side
-    const newRight = Object.assign({}, this.styles.rootRight);
-    newRight.width = "80%";
-
-    this.styles.rootRight = newRight;
-
+    // update state
     this.setState({
       showMenu: true
     });
