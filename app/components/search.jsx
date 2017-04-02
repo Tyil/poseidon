@@ -10,6 +10,7 @@ class Search extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleKey = this.handleKey.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -18,6 +19,14 @@ class Search extends React.Component {
       value: event.target.value
     });
   }
+
+  handleKey(event) {
+    if (event.key != "Enter") {
+      return;
+    }
+
+    this.props.submit(event, this.state);
+  };
 
   handleSubmit(event) {
     this.props.submit(event, this.state);
@@ -35,6 +44,7 @@ class Search extends React.Component {
               id="main-search"
               value={this.state.value}
               onChange={this.handleChange}
+              onKeyDown={this.handleKey}
               fullWidth={true}
             />
             <RaisedButton
