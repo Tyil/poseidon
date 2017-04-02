@@ -7,24 +7,14 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      redirectTo: null
-    };
-
     this.handleSearch = this.handleSearch.bind(this);
   }
 
   handleSearch(event, state) {
-    this.setState({
-      redirectTo: `/search/artist/${state.value}`
-    });
+    this.props.history.push(`/search/artist/${state.value}`);
   }
 
   render() {
-    if (this.state.redirectTo) {
-      return <Redirect to={{ pathname: this.state.redirectTo }} />;
-    }
-
     return (
       <div>
         <Search
