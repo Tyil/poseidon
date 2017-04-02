@@ -1,7 +1,11 @@
 {
   "name": "poseidon",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tyil/poseidon"
+  },
   "version": "0.1.0",
-  "description": "",
+  "description": "A music collector's library",
   "main": "app/main.js",
   "dependencies": {
     "babel-core": "^6.24.0",
@@ -37,6 +41,6 @@
     "start": "npm run build && npm run serve",
     "test": "eslint -c .eslintrc.express.yml app/**/*.js && eslint -c .eslintrc.react.yml app/**/*.jsx && mocha"
   },
-  "author": "",
+  "author": "Patrick Spek <p.spek@tyil.work> (https://tyil.work)",
   "license": "GPL-3.0"
 }
