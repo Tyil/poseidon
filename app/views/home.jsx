@@ -11,6 +11,10 @@ export default class Home extends React.Component {
   }
 
   handleSearch(event, state) {
+    if (state.value == "") {
+      return;
+    }
+
     this.props.history.push(`/search/artist/${state.value}`);
   }
 

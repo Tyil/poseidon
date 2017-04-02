@@ -72,6 +72,14 @@ class SearchArtist extends React.Component {
   }
 
   handleSearch(event, state) {
+    if (state.value == "") {
+      this.setState({
+        artists: []
+      });
+
+      return;
+    }
+
     this.props.history.push(`/search/artist/${state.value}`);
     this.callApi(state.value);
   }
