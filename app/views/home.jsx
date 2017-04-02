@@ -1,9 +1,8 @@
-import Redirect from "react-router-dom";
 import React from "react";
 
 import Search from "../components/search.jsx";
 
-export default class Home extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
 
@@ -29,4 +28,11 @@ export default class Home extends React.Component {
     );
   }
 }
+
+Home.propTypes = {
+  history: React.PropTypes.object,
+  "history.push": React.PropTypes.func
+};
+
+export default Home;
 

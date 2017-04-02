@@ -29,7 +29,7 @@ class SearchArtist extends React.Component {
 
     request(url, (error, response, body) => {
       if (error || response.statusCode != 200) {
-        message = response.statusCode;
+        let message = response.statusCode;
 
         if (error) {
           message += ": " + error;
@@ -51,8 +51,6 @@ class SearchArtist extends React.Component {
           loading: false
         });
 
-        console.error(data);
-
         return;
       }
 
@@ -67,7 +65,7 @@ class SearchArtist extends React.Component {
     this.callApi(this.props.match.params.query);
   }
 
-  handleClick(mbid, event) {
+  handleClick(mbid) {
     this.props.history.push(`/artist/${mbid}`);
   }
 
@@ -126,6 +124,8 @@ class SearchArtist extends React.Component {
 }
 
 SearchArtist.propTypes = {
+  history: React.PropTypes.object,
+  "history.push": React.PropTypes.func,
   match: React.PropTypes.object,
   "match.params": React.PropTypes.object,
   "match.params.query": React.PropTypes.object

@@ -54,7 +54,7 @@ export default class AppComponent extends React.Component {
   getStyleRightHidden() {
     return {
       width: "100%"
-    }
+    };
   }
 
   getStyleRightVisible() {
@@ -62,7 +62,7 @@ export default class AppComponent extends React.Component {
       float: "left",
       width: "80%"
     };
-  };
+  }
 
   handleMenuToggle() {
     if (this.state.showMenu) {

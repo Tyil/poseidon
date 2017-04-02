@@ -26,7 +26,7 @@ class Search extends React.Component {
     }
 
     this.props.submit(event, this.state);
-  };
+  }
 
   handleSubmit(event) {
     this.props.submit(event, this.state);

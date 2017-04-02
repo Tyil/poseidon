@@ -18,5 +18,9 @@ class HeaderComponent extends React.Component {
   }
 }
 
+HeaderComponent.propTypes = {
+  leftFunction: React.PropTypes.func
+};
+
 export default HeaderComponent;
 
