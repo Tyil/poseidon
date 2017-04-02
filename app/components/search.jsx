@@ -1,7 +1,7 @@
 import React from "react";
 import {Card, CardHeader, CardText, RaisedButton, TextField} from "material-ui";
 
-export default class Search extends React.Component {
+class Search extends React.Component {
   constructor(props) {
     super(props);
 
@@ -49,4 +49,11 @@ export default class Search extends React.Component {
     );
   }
 }
+
+Search.propTypes = {
+  submit: React.PropTypes.func,
+  title: React.PropTypes.string
+};
+
+export default Search;
 

@@ -1,6 +1,5 @@
-import {Link, Redirect} from "react-router-dom";
+import Redirect from "react-router-dom";
 import React from "react";
-import request from "request";
 
 import Search from "../components/search.jsx";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import request from "request";
 
-export default class SearchArtist extends React.Component {
+class SearchArtist extends React.Component {
   constructor(props) {
     super(props);
 
@@ -42,4 +42,12 @@ export default class SearchArtist extends React.Component {
     );
   }
 }
+
+SearchArtist.propTypes = {
+  match: React.PropTypes.object,
+  "match.params": React.PropTypes.object,
+  "match.params.query": React.PropTypes.object
+};
+
+export default SearchArtist;
 

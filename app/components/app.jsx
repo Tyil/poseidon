@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter as Router, Route, IndexRoute } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 import Header from "./header.jsx";
