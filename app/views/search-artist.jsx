@@ -67,8 +67,8 @@ class SearchArtist extends React.Component {
     this.callApi(this.props.match.params.query);
   }
 
-  handleClick(event) {
-    console.log(event);
+  handleClick(mbid, event) {
+    this.props.history.push(`/artist/${mbid}`);
   }
 
   handleSearch(event, state) {
@@ -118,7 +118,7 @@ class SearchArtist extends React.Component {
           key={artist.id}
           primaryText={artist.name}
           secondaryText={artist.disambiguation}
-          onClick={this.handleClick}
+          onClick={this.handleClick.bind(this, artist.id)}
         />
       );
     });
