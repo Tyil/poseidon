@@ -6,7 +6,7 @@ class Search extends React.Component {
     super(props);
 
     this.state = {
-      value: ""
+      value: this.props.default || ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -51,6 +51,7 @@ class Search extends React.Component {
 }
 
 Search.propTypes = {
+  default: React.PropTypes.string,
   submit: React.PropTypes.func,
   title: React.PropTypes.string
 };

@@ -8,7 +8,11 @@ router.route("/search/:query").get((req, res) => {
   const cache = memcache.get(cacheKey);
 
   if (cache) {
-    res.json(cache);
+    res.json({
+      ok: true,
+      data: cache
+    });
+
     return;
   }
 
