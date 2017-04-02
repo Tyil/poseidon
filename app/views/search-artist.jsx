@@ -3,6 +3,7 @@ import request from "request";
 import {Card, CardText, List, ListItem} from "material-ui";
 
 import Search from "../components/search.jsx";
+import Loader from "../components/loader.jsx";
 
 class SearchArtist extends React.Component {
   constructor(props) {
@@ -96,7 +97,7 @@ class SearchArtist extends React.Component {
 
   renderArtists(state) {
     if (state.loading) {
-      return <h2>Loading</h2>;
+      return <Loader />;
     }
 
     if (state.error) {
