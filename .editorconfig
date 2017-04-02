@@ -1,11 +1,14 @@
-[*]
-charset              = utf8
-end_of_line          = lf
-insert_final_newline = true
+root = true
 
-[*.jsx?]
-indent_style         = space
-intent_size          = 2
+[*]
+charset                  = utf8
+end_of_line              = lf
+insert_final_newline     = true
+trim_trailing_whitespace = true
+
+[*.{js,json,jsx}]
+indent_style = space
+intent_size  = 2
 
 [*.html]
 indent_style = tab
