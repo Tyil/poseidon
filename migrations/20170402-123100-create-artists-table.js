@@ -14,6 +14,9 @@ module.exports = {
       localName: {
         type: Sequelize.STRING
       },
+      autoDownload: {
+        type: Sequelize.BOOLEAN
+      },
       updatedAt: {
         type: Sequelize.DATE
       },
