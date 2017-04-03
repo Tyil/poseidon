@@ -6,9 +6,9 @@ class BaseCard extends React.Component {
     let header = "";
 
     if (this.props.title) {
-      header = <CardHeader
-        title={this.props.title}
-      />;
+      header = <CardHeader>
+        <h2>{this.props.title}</h2>
+      </CardHeader>;
     }
 
     return (
