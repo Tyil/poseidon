@@ -1,14 +1,20 @@
 import React from "react";
-import {Card, CardHeader, CardText} from "material-ui";
+import {Card, CardTitle, CardText} from "material-ui";
 
 class BaseCard extends React.Component {
+  static defaultProps = {
+      subtitle: ""
+  };
+
   render() {
     let header = "";
 
     if (this.props.title) {
-      header = <CardHeader>
-        <h2>{this.props.title}</h2>
-      </CardHeader>;
+      header =
+        <CardTitle
+          title={this.props.title}
+          subtitle={this.props.subtitle}
+        />;
     }
 
     return (
@@ -26,6 +32,7 @@ class BaseCard extends React.Component {
 
 BaseCard.propTypes = {
   title: React.PropTypes.node,
+  subtitle: React.PropTypes.node,
   children: React.PropTypes.node
 };
 

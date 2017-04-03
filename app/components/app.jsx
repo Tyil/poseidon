@@ -7,6 +7,7 @@ import Navbar from "./navbar.jsx";
 
 import Home from "../views/home.jsx";
 import SearchArtist from "../views/search-artist.jsx";
+import ShowArtist from "../views/artist.jsx";
 
 export default class AppComponent extends React.Component {
   constructor(props) {
@@ -108,6 +109,7 @@ export default class AppComponent extends React.Component {
                 <div>
                   <Route exact path="/" component={Home} />
                   <Route path="/search/artist/:query" component={SearchArtist} />
+                  <Route path="/artist/:mbid" component={ShowArtist} />
                 </div>
               </main>
             </div>
