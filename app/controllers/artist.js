@@ -44,7 +44,6 @@ router.route("/:mbid").get((req, res) => {
     }
 
     const data = JSON.parse(body);
-    console.log(data);
 
     // add to cache
     memcache.put(cacheKey, data, 600 * 1000);
