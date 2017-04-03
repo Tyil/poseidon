@@ -1,9 +1,10 @@
 import React from "react";
 import request from "request";
-import {Card, CardText, List, ListItem} from "material-ui";
+import {List, ListItem} from "material-ui";
 
-import Search from "../components/search.jsx";
+import BaseCard from "../components/base-card.jsx";
 import Loader from "../components/loader.jsx";
+import Search from "../components/search.jsx";
 
 class SearchArtist extends React.Component {
   constructor(props) {
@@ -90,13 +91,11 @@ class SearchArtist extends React.Component {
           submit={this.handleSearch}
           default={this.props.match.params.query}
         />
-        <Card style={{margin: "8px"}}>
-          <CardText>
-            <List>
-              {this.renderArtists(this.state)}
-            </List>
-          </CardText>
-        </Card>
+        <BaseCard>
+          <List>
+            {this.renderArtists(this.state)}
+          </List>
+        </BaseCard>
       </div>
     );
   }

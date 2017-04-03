@@ -1,5 +1,7 @@
 import React from "react";
-import {Card, CardHeader, CardText, RaisedButton, TextField} from "material-ui";
+import {RaisedButton, TextField} from "material-ui";
+
+import BaseCard from "../components/base-card.jsx";
 
 class Search extends React.Component {
   constructor(props) {
@@ -34,28 +36,23 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div style={{margin: "8px"}}>
-        <Card>
-          <CardHeader
-            title={this.props.title}
-          />
-          <CardText>
-            <TextField
-              id="main-search"
-              value={this.state.value}
-              onChange={this.handleChange}
-              onKeyDown={this.handleKey}
-              fullWidth={true}
-            />
-            <RaisedButton
-              fullWidth={true}
-              onTouchTap={this.handleSubmit}
-            >
-              Search
-            </RaisedButton>
-          </CardText>
-        </Card>
-      </div>
+      <BaseCard
+        title={this.props.title}
+      >
+        <TextField
+          id="main-search"
+          value={this.state.value}
+          onChange={this.handleChange}
+          onKeyDown={this.handleKey}
+          fullWidth={true}
+        />
+        <RaisedButton
+          fullWidth={true}
+          onTouchTap={this.handleSubmit}
+        >
+          Search
+        </RaisedButton>
+      </BaseCard>
     );
   }
 }
