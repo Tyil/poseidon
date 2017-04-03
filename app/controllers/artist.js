@@ -24,13 +24,19 @@ router.route("/search/:query").get((req, res) => {
       "User-Agent": "Poseidon/0.1.0"
     }
   }, (error, response, body) => {
-    if (error || response.statusCode != 200) {
+    if (error) {
       res.json({
         ok: false,
-        error: {
-          status: response.statusCode,
-          message: error
-        }
+        message: error.code
+      });
+
+      return;
+    }
+
+    if(response.statusCode != 200) {
+      res.json({
+        ok: false,
+        message: error.statusCode
       });
 
       return;

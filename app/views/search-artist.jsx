@@ -47,7 +47,7 @@ class SearchArtist extends React.Component {
 
       if (!data.ok) {
         this.setState({
-          error: "API gave non-ok status",
+          error: "API gave non-ok status: " + data.message,
           loading: false
         });
 
