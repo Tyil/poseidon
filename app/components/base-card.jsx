@@ -1,12 +1,14 @@
 import React from "react";
-import {Card, CardTitle, CardText} from "material-ui";
+import {Card, CardActions, CardTitle, CardText, FlatButton} from "material-ui";
 
 class BaseCard extends React.Component {
   static defaultProps = {
-      subtitle: ""
+    actions: [],
+    subtitle: ""
   };
 
   render() {
+    let actions = "";
     let header = "";
 
     if (this.props.title) {
@@ -17,6 +19,23 @@ class BaseCard extends React.Component {
         />;
     }
 
+    if (this.props.actions.length > 0) {
+      const buttons = this.props.actions.map(x => {
+        return (
+          <FlatButton
+            key={x.label}
+            label={x.label}
+            onClick={x.action}
+          />
+        );
+      });
+
+      actions =
+        <CardActions>
+          {buttons}
+        </CardActions>;
+    }
+
     return (
       <div style={{margin: "8px"}}>
         <Card>
@@ -24,6 +43,7 @@ class BaseCard extends React.Component {
           <CardText>
             {this.props.children}
           </CardText>
+          {actions}
         </Card>
       </div>
     );
@@ -31,9 +51,10 @@ class BaseCard extends React.Component {
 }
 
 BaseCard.propTypes = {
-  title: React.PropTypes.node,
+  actions: React.PropTypes.array,
+  children: React.PropTypes.node,
   subtitle: React.PropTypes.node,
-  children: React.PropTypes.node
+  title: React.PropTypes.node
 };
 
 export default BaseCard;
