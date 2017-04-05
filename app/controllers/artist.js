@@ -53,7 +53,6 @@ router.route("/:mbid").get((req, res) => {
       data: {
         name: data.name,
         disambiguation: data.disambiguation,
-        country: data.area.name,
         albums: data.releases.map(x => x.id)
       }
     });
