@@ -1,6 +1,6 @@
-const router = require("express").Router();
-const request = require("request");
+const fetch = require("node-fetch");
 const memcache = require("memory-cache");
+const router = require("express").Router();
 
 router.route("/:mbid").get((req, res) => {
   const mbid = req.params.mbid;
@@ -18,45 +18,40 @@ router.route("/:mbid").get((req, res) => {
   }
 
   const url = "https://musicbrainz.org/ws/2/artist/" + mbid + "?inc=releases&fmt=json";
-
-  request({
-    url: url,
-    headers: {
-      "User-Agent": "Poseidon/0.1.0"
-    }
-  }, (error, response, body) => {
-    if (error) {
-      res.json({
-        ok: false,
-        message: error.code
-      });
-
-      return;
-    }
-
-    if(response.statusCode != 200) {
-      res.json({
-        ok: false,
-        message: response.statusCode
-      });
-
-      return;
-    }
-
-    const data = JSON.parse(body);
-
-    // add to cache
-    memcache.put(cacheKey, data, 600 * 1000);
-
-    res.json({
-      ok: true,
-      data: {
-        name: data.name,
-        disambiguation: data.disambiguation,
-        albums: data.releases.map(x => x.id)
-      }
-    });
+  const headers = new Headers({
+    "User-Agent": "Poseidon/0.1.0"
   });
+  const request = new Request(url, {
+    headers: headers
+  });
+
+  fetch(request)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      return response.json();
+    })
+    .then(json => {
+      // add to cache
+      memcache.put(cacheKey, data, 600 * 1000);
+
+      res.json({
+        ok: true,
+        data: {
+          name: json.name,
+          disambiguation: json.disambiguation,
+          albums: json.releases.map(x => x.id)
+        }
+      });
+    })
+    .catch(message => {
+      res.json({
+        ok: false,
+        message: message
+      });
+    });
 });
 
 router.route("/search/:query").get((req, res) => {
@@ -74,41 +69,34 @@ router.route("/search/:query").get((req, res) => {
   }
 
   const url = "https://musicbrainz.org/ws/2/artist?query=" + query + "&limit=50&fmt=json";
-
-  request({
-    url: url,
-    headers: {
-      "User-Agent": "Poseidon/0.1.0"
-    }
-  }, (error, response, body) => {
-    if (error) {
-      res.json({
-        ok: false,
-        message: error.code
-      });
-
-      return;
-    }
-
-    if(response.statusCode != 200) {
-      res.json({
-        ok: false,
-        message: response.statusCode
-      });
-
-      return;
-    }
-
-    const data = JSON.parse(body);
-
-    // add to cache
-    memcache.put(cacheKey, data, 600 * 1000);
-
-    res.json({
-      ok: true,
-      data: data
-    });
+  const headers = new Headers({
+    "User-Agent": "Poseidon/0.1.0"
   });
+  const request = new Request(url, {
+    headers: headers
+  });
+
+  fetch(request)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      return response.json();
+    }).then(json => {
+      // add to cache
+      memcache.put(cacheKey, data, 600 * 1000);
+
+      res.json({
+        ok: true,
+        data: data
+      });
+    }).catch(message => {
+      res.json({
+        ok: false,
+        message: message
+      });
+    });
 });
 
 module.exports = router;
