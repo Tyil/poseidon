@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: __dirname + "/app/react.jsx",
+  entry: __dirname + "/app/frontend/main.jsx",
   output: {
     path: __dirname + "/public",
     filename: "app.js"

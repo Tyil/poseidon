@@ -1,4 +1,4 @@
-const db = require("../app/models/index.js");
+const db = require("../app/api/models/index.js");
 
 module.exports = {
   up: (queryInterface, Sequelize) => {

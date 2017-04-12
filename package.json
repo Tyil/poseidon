@@ -6,7 +6,7 @@
   },
   "version": "0.1.0",
   "description": "A music collector's library",
-  "main": "app/main.js",
+  "main": "app/api/main.js",
   "dependencies": {
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
