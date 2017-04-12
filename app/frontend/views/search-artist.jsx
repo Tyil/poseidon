@@ -1,11 +1,14 @@
 import React from "react";
-import request from "request";
 import {List, ListItem} from "material-ui";
+import promise from "es6-promise";
+import "isomorphic-fetch";
 import PropTypes from "prop-types";
 
 import BaseCard from "../components/base-card.jsx";
 import Loader from "../components/loader.jsx";
 import Search from "../components/search.jsx";
+
+promise.polyfill();
 
 class SearchArtist extends React.Component {
   static propTypes = {
@@ -37,38 +40,28 @@ class SearchArtist extends React.Component {
 
     const url = `http://localhost:3000/api/artist/search/${query}`;
 
-    request(url, (error, response, body) => {
-      if (error || response.statusCode != 200) {
-        let message = response.statusCode;
+    fetch(url)
+      .then(response => {
+        if(!response.ok) {
+          throw new Error(response.statusText);
+        }
 
-        if (error) {
-          message += ": " + error;
+        return response.json();
+      }).then(json => {
+        if (!json.ok) {
+          throw new Error(json.message);
         }
 
         this.setState({
-          error: message,
+          artists: json.data.artists,
           loading: false
         });
-
-        return;
-      }
-
-      const data = JSON.parse(body);
-
-      if (!data.ok) {
+      }).catch(error => {
         this.setState({
-          error: "API gave non-ok status: " + data.message,
+          error: "error:" + error.message,
           loading: false
         });
-
-        return;
-      }
-
-      this.setState({
-        artists: data.data.artists,
-        loading: false
       });
-    });
   }
 
   componentDidMount() {

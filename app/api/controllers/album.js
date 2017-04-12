@@ -1,6 +1,7 @@
+require("isomorphic-fetch");
+
 const router = require("express").Router();
 const memcache = require("memory-cache");
-const fetch = require("node-fetch");
 
 router.route("/:mbid").get((req, res) => {
   const mbid = req.params.mbid;
