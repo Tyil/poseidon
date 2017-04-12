@@ -1,5 +1,6 @@
 import React from "react";
 import {AppBar} from "material-ui";
+import PropTypes from "prop-types";
 
 class HeaderComponent extends React.Component {
   leftButtonHandler() {
@@ -19,7 +20,7 @@ class HeaderComponent extends React.Component {
 }
 
 HeaderComponent.propTypes = {
-  leftFunction: React.PropTypes.func
+  leftFunction: PropTypes.func
 };
 
 export default HeaderComponent;

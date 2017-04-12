@@ -10,11 +10,18 @@ import {
   TableRowColumn
 } from "material-ui";
 import SettingsIcon from "material-ui/svg-icons/action/settings";
+import PropTypes from "prop-types";
 
 import BaseCard from "../components/base-card.jsx";
 import Loader from "../components/loader.jsx";
 
 class Artist extends React.Component {
+  static propTypes = {
+    match: PropTypes.object,
+    "match.params": PropTypes.object,
+    "match.params.query": PropTypes.object
+  }
+
   constructor(props) {
     super(props);
 
@@ -170,12 +177,6 @@ class Artist extends React.Component {
     );
   }
 }
-
-Artist.propTypes = {
-  match: React.PropTypes.object,
-  "match.params": React.PropTypes.object,
-  "match.params.query": React.PropTypes.object
-};
 
 export default Artist;
 

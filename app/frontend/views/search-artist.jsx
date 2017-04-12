@@ -1,12 +1,21 @@
 import React from "react";
 import request from "request";
 import {List, ListItem} from "material-ui";
+import PropTypes from "prop-types";
 
 import BaseCard from "../components/base-card.jsx";
 import Loader from "../components/loader.jsx";
 import Search from "../components/search.jsx";
 
 class SearchArtist extends React.Component {
+  static propTypes = {
+    history: PropTypes.object,
+    "history.push": PropTypes.func,
+    match: PropTypes.object,
+    "match.params": PropTypes.object,
+    "match.params.query": PropTypes.object
+  }
+
   constructor(props) {
     super(props);
 
@@ -121,14 +130,6 @@ class SearchArtist extends React.Component {
     });
   }
 }
-
-SearchArtist.propTypes = {
-  history: React.PropTypes.object,
-  "history.push": React.PropTypes.func,
-  match: React.PropTypes.object,
-  "match.params": React.PropTypes.object,
-  "match.params.query": React.PropTypes.object
-};
 
 export default SearchArtist;
 

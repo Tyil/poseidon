@@ -1,11 +1,19 @@
 import React from "react";
 import {Card, CardActions, CardTitle, CardText, FlatButton} from "material-ui";
+import PropTypes from "prop-types";
 
 class BaseCard extends React.Component {
   static defaultProps = {
     actions: [],
     subtitle: ""
   };
+
+  static propTypes = {
+    actions: PropTypes.array,
+    children: PropTypes.node,
+    subtitle: PropTypes.node,
+    title: PropTypes.node
+  }
 
   render() {
     let actions = "";
@@ -49,13 +57,6 @@ class BaseCard extends React.Component {
     );
   }
 }
-
-BaseCard.propTypes = {
-  actions: React.PropTypes.array,
-  children: React.PropTypes.node,
-  subtitle: React.PropTypes.node,
-  title: React.PropTypes.node
-};
 
 export default BaseCard;
 

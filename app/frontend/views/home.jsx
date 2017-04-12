@@ -1,8 +1,14 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Search from "../components/search.jsx";
 
 class Home extends React.Component {
+  static propTypes = {
+    history: PropTypes.object,
+    "history.push": PropTypes.func
+  }
+
   constructor(props) {
     super(props);
 
@@ -28,11 +34,6 @@ class Home extends React.Component {
     );
   }
 }
-
-Home.propTypes = {
-  history: React.PropTypes.object,
-  "history.push": React.PropTypes.func
-};
 
 export default Home;
 
